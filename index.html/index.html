@@ -21,10 +21,30 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 
   <style>
-    * {
+   
+   * {
       box-sizing: border-box;
     }
 
+    .menu-servizi {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.servizio-domicilio {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* opzionale: colore leggermente diverso */
+.servizio-domicilio {
+  background: linear-gradient(135deg, #4cc9f0, #38bdf8);
+}
     :root {
       --bg1: #0d1b2a;
       --bg2: #1b4f72;
@@ -932,23 +952,31 @@
       </a>
     </details>
 
-    <nav class="menu-servizi">
-      <div class="dropdown">
-        <button class="dropbtn">
-          <i class="fa-solid fa-screwdriver-wrench"></i> Servizi Offerti
-          <span class="arrow">▾</span>
-        </button>
+   
 
-        <div class="dropdown-content">
-          <a href="#"><i class="fa-solid fa-spray-can-sparkles"></i> Igienizzazione sedili</a>
-          <a href="#"><i class="fa-solid fa-car-side"></i> Lavaggio esterno</a>
-          <a href="#"><i class="fa-solid fa-soap"></i> Lavaggio interno completo</a>
-          <a href="#"><i class="fa-solid fa-border-all"></i> Pulizia tappetini</a>
-          <a href="#"><i class="fa-solid fa-wind"></i> Sanificazione abitacolo</a>
-          <a href="#"><i class="fa-solid fa-glass-water-droplet"></i> Trattamento vetri</a>
-        </div>
-      </div>
-    </nav>
+        
+    <nav class="menu-servizi">
+  <div class="dropdown">
+    <button class="dropbtn">
+      <i class="fa-solid fa-screwdriver-wrench"></i> Servizi Offerti
+      <span class="arrow">▾</span>
+    </button>
+
+    <div class="dropdown-content">
+      <a href="#"><i class="fa-solid fa-spray-can-sparkles"></i> Igienizzazione sedili</a>
+      <a href="#"><i class="fa-solid fa-car-side"></i> Lavaggio esterno</a>
+      <a href="#"><i class="fa-solid fa-soap"></i> Lavaggio interno completo</a>
+      <a href="#"><i class="fa-solid fa-border-all"></i> Pulizia tappetini</a>
+      <a href="#"><i class="fa-solid fa-wind"></i> Sanificazione abitacolo</a>
+      <a href="#"><i class="fa-solid fa-glass-water-droplet"></i> Trattamento vetri</a>
+    </div>
+  </div>
+
+  <!-- NUOVO BOTTONE -->
+  <a href="servizi-domicilio.html" class="dropbtn servizio-domicilio">
+    <i class="fa-solid fa-house"></i> Servizio a domicilio
+  </a>
+</nav>
 
     <div id="mappa">
   <iframe
@@ -1009,6 +1037,7 @@
         <div class="timeline-text">Trattamenti avanzati, sanificazioni e servizi personalizzati.</div>
       </div>
     </div>
+    
 
     <div class="stats-row">
       <div class="stat-box" data-aos="zoom-in">
@@ -1050,6 +1079,7 @@
       </div>
     </div>
   </section>
+  
 
   <section class="section" data-aos="fade-up">
     <h2 class="section-title">Contatti & Info</h2>
