@@ -25,14 +25,62 @@
    * {
       box-sizing: border-box;
     }
+    
 
-    .menu-servizi {
+    /* Evidenzia Servizio a Domicilio */
+.servizio-domicilio {
+  position: relative;
+  font-weight: 60;
+  box-shadow: 0 0 14px rgba(76,201,240,0.9);
+  animation: domicilioPulse 2s infinite;
+}
+
+/* Badge "NOVITÀ" */
+.servizio-domicilio::after {
+  content: "NOVITÀ";
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: #ff4757;
+  color: white;
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: px;
+  font-weight: bold;
+  box-shadow: 0 0 6px rgba(0,0,0,0.4);
+}
+
+/* Effetto pulsazione */
+@keyframes domicilioPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+.menu-servizi {
   display: flex;
   justify-content: center;
-  gap: 16px;
-  margin-top: 20px;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;        /* distanza giusta */
+  width: 100%;
+  margin-top: 18px;
+  flex-wrap: nowrap; /* restano affiancati */
 }
+
+.menu-servizi .dropbtn,
+.menu-servizi .servizio-domicilio {
+  font-size: 13px;      /* testo più piccolo */
+  padding: 10px 12px;   /* bottone più compatto */
+  min-width: 0;         /* evita overflow */
+  width: auto;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap; /* non va a capo */
+}
+
+
+
+
 
 .servizio-domicilio {
   text-decoration: none;
@@ -525,9 +573,15 @@
       padding-left: 26px;
     }
 
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
+    /* apertura a click */
+.dropdown.open .dropdown-content{
+  display:block;
+}
+
+.dropdown.open .arrow{
+  transform: rotate(180deg);
+}
+
 
     @keyframes fadeIn {
       from {
@@ -1110,6 +1164,57 @@
     <p class="autore">Accettiamo carte di pagamento e contanti</p>
     © 2026 - Wash Drive Concesio • Muhammad Aziz
   </footer>
+
+  <script>
+  const dropdown = document.querySelector(".dropdown");
+  const dropBtn = dropdown?.querySelector(".dropbtn");
+  const menu = dropdown?.querySelector(".dropdown-content");
+
+  if (dropdown && dropBtn && menu) {
+
+    dropBtn.setAttribute("aria-expanded", "false");
+
+    // Apri / Chiudi al click
+    dropBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+
+      const isOpen = dropdown.classList.toggle("open");
+
+      dropBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    // Chiudi cliccando fuori
+    document.addEventListener("click", () => {
+      closeMenu();
+    });
+
+    // Chiudi con ESC
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        closeMenu();
+      }
+    });
+
+    // Chiudi quando clicchi una voce
+    menu.querySelectorAll("a").forEach((a) => {
+      a.addEventListener("click", () => {
+        closeMenu();
+      });
+    });
+
+    // ✅ Chiudi quando scorri la pagina
+    window.addEventListener("scroll", () => {
+      closeMenu();
+    });
+
+    function closeMenu() {
+      if (dropdown.classList.contains("open")) {
+        dropdown.classList.remove("open");
+        dropBtn.setAttribute("aria-expanded", "false");
+      }
+    }
+  }
+</script>
 
   <!-- LIBRERIE JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
